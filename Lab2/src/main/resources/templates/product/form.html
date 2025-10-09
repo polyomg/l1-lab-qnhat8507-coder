@@ -1,0 +1,22 @@
+<!-- Hiển thị sản phẩm mặc định -->
+<h5>Sản phẩm mặc định</h5>
+<ul>
+    <li th:text="${p.name}"></li>
+    <li th:text="${p.price}"></li>
+</ul>
+
+<!-- Hiển thị sản phẩm nhập từ form -->
+<h5>Sản phẩm nhập</h5>
+<ul>
+    <li th:text="${product.name}"></li>
+    <li th:text="${product.price}"></li>
+</ul>
+
+<!-- Danh sách sản phẩm -->
+<h5>Danh sách sản phẩm</h5>
+<ul>
+    <th:block th:each="item : ${items}">
+        <li th:text="${item.name}"></li>
+        <li th:text="${item.price}"></li>
+    </th:block>
+</ul>
