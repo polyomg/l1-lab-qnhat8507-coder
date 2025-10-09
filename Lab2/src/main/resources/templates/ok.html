@@ -1,0 +1,12 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form action="/ctrl/ok" method="post">
+    <button>OK 1</button>
+    <button formmethod="get">OK 2</button>
+    <button formaction="/ctrl/ok?x">OK 3</button>
+</form>
+
+<h2 th:text="${message}">[message]</h2>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1 th:text="${message}"></h1>        <!-- message từ Model (forward) -->
+<h1 th:text="${param.message}"></h1>  <!-- message từ param trong URL (redirect) -->
+</body>
+</html>
