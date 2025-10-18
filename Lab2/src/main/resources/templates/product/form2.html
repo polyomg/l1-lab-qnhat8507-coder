@@ -1,0 +1,22 @@
+<form action="/product/save2" method="post">
+    <input name="name" th:value="${item2.name}">
+    <input name="price" th:value="${item2.price}">
+    <button>Save</button>
+</form>
+
+<ul>
+    <li>?1name: <span th:text="${item1.name}"></span></li>
+    <li>?1price: <span th:text="${item1.price}"></span></li>
+</ul>
+
+<ul>
+    <li>?2name: <span th:text="${item2.name}"></span></li>
+    <li>?2price: <span th:text="${item2.price}"></span></li>
+</ul>
+
+<ul>
+    <th:block th:each="it : ${items}">
+        <li>item.name: <span th:text="${it.name}"></span></li>
+        <li>item.price: <span th:text="${it.price}"></span></li>
+    </th:block>
+</ul>
