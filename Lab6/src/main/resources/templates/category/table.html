@@ -1,0 +1,22 @@
+<div th:fragment="table_body">
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cat : ${items}">
+            <td th:text="${cat.id}"></td>
+            <td th:text="${cat.name}"></td>
+            <td>
+                <a class="btn btn-sm btn-warning" th:href="@{|/category/edit/${cat.id}|}">Edit</a>
+                <a class="btn btn-sm btn-danger" th:href="@{|/category/delete/${cat.id}|}"
+                   onclick="return confirm('Xóa danh mục này?')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
