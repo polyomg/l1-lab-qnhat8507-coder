@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/_layout.html}">
+<head>
+  <title>Trang chủ</title>
+  
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="card">
+    <div class="card-header">
+      <h3>Chào mừng đến Web Shop</h3>
+    </div>
+    <div class="card-body">
+      <div class="d-flex gap-2">
+        <a class="btn" th:href="@{/category/index}">Quản lý Loại hàng</a>
+        <a class="btn" th:href="@{/product/page}">Quản lý Sản phẩm</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

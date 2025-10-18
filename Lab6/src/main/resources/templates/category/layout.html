@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE">Web Shop</title>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a th:href="@{/}">Trang Chủ</a>
+      <a th:href="@{/category/index}">Quản lý Loại hàng</a>
+      <a th:href="@{/product/page}">Quản lý Sản phẩm</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div layout:fragment="content">
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 FPT Polytechnic - Custom CSS Version</p>
+  </div>
+</footer>
+
+</body>
+</html>
