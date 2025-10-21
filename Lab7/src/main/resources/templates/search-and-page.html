@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tìm kiếm & Phân trang</title>
+</head>
+<body>
+<!-- Navigation Menu -->
+<nav style="background-color: #f0f0f0; padding: 10px; margin-bottom: 20px;">
+  <a href="/products" style="margin-right: 15px; text-decoration: none; color: #333;">📦 Danh sách sản phẩm</a>
+  <a href="/products-b2" style="margin-right: 15px; text-decoration: none; color: #333;">🔍 Tìm kiếm & Phân trang</a>
+  <a href="/inventory-by-category" style="margin-right: 15px; text-decoration: none; color: #333;">📊 Tồn kho theo loại</a>
+</nav>
+
+<h2>Tìm kiếm sản phẩm</h2>
+
+<!-- ✅ Form tìm kiếm: dùng POST -->
+<form th:action="@{/search-and-page}" method="post">
+  <input type="text" name="keywords" th:value="${keywords}" placeholder="Tìm sản phẩm...">
+  <button type="submit">Tìm kiếm</button>
+</form>
+
+<hr>
+
+<h3>Kết quả tìm kiếm</h3>
+<table border="1" style="width:100%">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Tên sản phẩm</th>
+    <th>Giá</th>
+    <th>Ngày</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="p : ${page.content}">
+    <td th:text="${p.id}"></td>
+    <td th:text="${p.name}"></td>
+    <td th:text="${p.price}"></td>
+    <td th:text="${#temporals.format(p.date, 'yyyy-MM-dd')}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<!-- ✅ Liên kết phân trang (GET request) -->
+<div>
+  <a th:if="${!page.first}" th:href="@{|/search-and-page?keywords=${keywords}&p=0|}">First</a>
+  <a th:if="${page.hasPrevious()}" th:href="@{|/search-and-page?keywords=${keywords}&p=${page.number - 1}|}">Previous</a>
+  <a th:if="${page.hasNext()}" th:href="@{|/search-and-page?keywords=${keywords}&p=${page.number + 1}|}">Next</a>
+  <a th:if="${!page.last}" th:href="@{|/search-and-page?keywords=${keywords}&p=${page.totalPages - 1}|}">Last</a>
+</div>
+
+<ul>
+  <li>Số thực thể hiện tại: [[${page.getNumberOfElements}]]</li>
+  <li>Trang số: [[${page.number}]]</li>
+  <li>Kích thước trang: [[${page.size}]]</li>
+  <li>Tổng số thực thể: [[${page.totalElements}]]</li>
+  <li>Tổng số trang: [[${page.totalPages}]]</li>
+</ul>
+</body>
+</html>

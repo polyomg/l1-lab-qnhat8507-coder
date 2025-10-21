@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách sản phẩm</title>
+</head>
+<body>
+<!-- Navigation Menu -->
+<nav style="background-color: #f0f0f0; padding: 10px; margin-bottom: 20px;">
+  <a href="/products" style="margin-right: 15px; text-decoration: none; color: #333;">📦 Danh sách sản phẩm</a>
+  <a href="/products-b2" style="margin-right: 15px; text-decoration: none; color: #333;">🔍 Tìm kiếm & Phân trang</a>
+  <a href="/inventory-by-category" style="margin-right: 15px; text-decoration: none; color: #333;">📊 Tồn kho theo loại</a>
+</nav>
+
+<h2>SEARCH BY PRICE</h2>
+<form action="/products/search" method="post">
+  <input type="text" name="min" th:value="${min}">
+  <input type="text" name="max" th:value="${max}">
+  <button type="submit">Search</button>
+</form>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Tên sản phẩm</th>
+    <th>Giá</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="p : ${products}">
+    <td th:text="${p.id}"></td>
+    <td th:text="${p.name}"></td>
+    <td th:text="${p.price}"></td>
+    <td th:text="${p.date}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
