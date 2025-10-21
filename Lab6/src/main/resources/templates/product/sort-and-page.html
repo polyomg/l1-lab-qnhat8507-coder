@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/_layout.html}">
+<head>
+    <title>Quản lý Sản phẩm</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card">
+        <div class="card-header">
+            <h3>DANH SÁCH SẢN PHẨM</h3>
+        </div>
+        <div class="card-body">
+            <table class="styled-table">
+                <thead>
+                <tr>
+                    <th><a th:href="@{/product/sort(field='id')}">Id</a></th>
+                    <th><a th:href="@{/product/sort(field='name')}">Name</a></th>
+                    <th><a th:href="@{/product/sort(field='price')}">Price</a></th>
+                    <th><a th:href="@{/product/sort(field='createDate')}">Date</a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${items != null}" th:each="item: ${items}">
+                    <td th:text="${item.id}"></td>
+                    <td th:text="${item.name}"></td>
+                    <td th:text="${#numbers.formatCurrency(item.price)}"></td>
+                    <td th:text="${#dates.format(item.createDate, 'dd-MM-yyyy')}"></td>
+                </tr>
+                <tr th:if="${page != null}" th:each="item: ${page.content}">
+                    <td th:text="${item.id}"></td>
+                    <td th:text="${item.name}"></td>
+                    <td th:text="${#numbers.formatCurrency(item.price)}"></td>
+                    <td th:text="${#dates.format(item.createDate, 'dd-MM-yyyy')}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="pagination" th:if="${page != null}">
+                <a th:href="@{/product/page(p=0)}">First</a>
+                <a th:href="@{/product/page(p=${page.number - 1})}" th:if="${page.number > 0}">Previous</a>
+                <a th:href="@{/product/page(p=${page.number + 1})}" th:if="${page.number < page.totalPages - 1}">Next</a>
+                <a th:href="@{/product/page(p=${page.totalPages - 1})}">Last</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

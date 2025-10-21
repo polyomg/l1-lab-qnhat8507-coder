@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tồn kho theo loại</title>
+</head>
+<body>
+<!-- Navigation Menu -->
+<nav style="background-color: #f0f0f0; padding: 10px; margin-bottom: 20px;">
+  <a href="/products" style="margin-right: 15px; text-decoration: none; color: #333;">📦 Danh sách sản phẩm</a>
+  <a href="/products-b2" style="margin-right: 15px; text-decoration: none; color: #333;">🔍 Tìm kiếm & Phân trang</a>
+  <a href="/inventory-by-category" style="margin-right: 15px; text-decoration: none; color: #333;">📊 Tồn kho theo loại</a>
+</nav>
+
+<h2>TỒN KHO THEO LOẠI</h2>
+<table border="1" style="width:100%">
+    <tr>
+        <th>Loại hàng</th>
+        <th>Tổng giá</th>
+        <th>Số sản phẩm</th>
+    </tr>
+    <th:block th:each="item : ${items}">
+        <tr>
+            <td th:text="${item.groupName}"></td>
+            <td th:text="${#numbers.formatDecimal(item.totalSum, 0, 2)}"></td>
+            <td th:text="${item.totalCount}"></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
